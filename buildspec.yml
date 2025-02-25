@@ -1,22 +1,32 @@
+buildspec.yml
 version: 0.2
 
 phases:
   install:
     runtime-versions:
-      java: corretto17  # Adjust based on your Java version
+      java: corretto17  # Adjust based on your Spring Boot version
+    commands:
+      - echo "Installing Maven..."
+      - yum install -y maven  # Ensure Maven is installed
   pre_build:
     commands:
-      - echo "Installing dependencies..."
-      - mvn clean install
+      - echo "Logging into AWS..."
+      - aws --version  # Check AWS CLI version
   build:
     commands:
-      - echo "Building the JAR file..."
-      - mvn package -DskipTests
+      - echo "Building the Spring Boot application..."
+      - mvn clean package -DskipTests  # Build JAR without running tests
+      - ls -lah target  # Verify JAR is created
   post_build:
     commands:
-      - echo "Copying JAR file for deployment..."
-      - cp target/*.jar application.jar
+      - echo "Preparing deployment..."
+      - mkdir -p deploy
+      - cp target/*.jar deploy/application.jar
+      - ls -lah deploy  # Verify JAR is copied
+      - echo "Build completed!"
 
 artifacts:
   files:
-    - application.jar
+    - deploy/application.jar
+    - appspec.yml  # Needed for Elastic Beanstalk deployment
+  discard-paths: yes
