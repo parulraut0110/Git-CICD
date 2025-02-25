@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.psr.SpringBoot_AWS_Pipeline.SpringBootAwsPipelineApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.344 s -- in com.psr.SpringBoot_AWS_Pipeline.SpringBootAwsPipelineApplicationTests

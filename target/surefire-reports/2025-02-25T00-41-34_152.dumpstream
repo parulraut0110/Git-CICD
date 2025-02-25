@@ -1,0 +1,5 @@
+# Created at 2025-02-25T00:41:34.416
+Boot Manifest-JAR contains absolute paths in classpath 'G:\SpringCloudProjects\SpingBoot-CICD-AWS\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
