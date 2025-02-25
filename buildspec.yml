@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17  # Adjust based on your Java version
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - mvn clean install
+  build:
+    commands:
+      - echo "Building the JAR file..."
+      - mvn package -DskipTests
+  post_build:
+    commands:
+      - echo "Copying JAR file for deployment..."
+      - cp target/*.jar application.jar
+
+artifacts:
+  files:
+    - application.jar
